@@ -1,6 +1,8 @@
 import QtQuick 2.13
+import QtQuick.Controls 2.12
 import QtGraphicalEffects 1.13
 import QtQuick.Window 2.13
+import "../customComponents"
 
 /*
 
@@ -10,10 +12,10 @@ import QtQuick.Window 2.13
 
 */
 
-Item {
+Button {
     property string iconFilePath: '../images/bulbIcon.png'
 
-    width: calculateSize(510); height: calculateSize(800)
+    width: 510 * scaleRatio; height: 800 * scaleRatio
 
     // Tile //
     Rectangle {
@@ -26,11 +28,11 @@ Item {
         Image {
             id: tileIcon
             source: iconFilePath
-            width: calculateSize(250);
+            width: 250 * scaleRatio
             fillMode: Image.PreserveAspectFit
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            anchors.topMargin: calculateSize(60)
+            anchors.topMargin: 60  * scaleRatio
         }
 
         // Divider //
@@ -38,7 +40,7 @@ Item {
             id: tileDivider
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: tileIcon.bottom
-            anchors.topMargin: calculateSize(60)
+            anchors.topMargin: 60  * scaleRatio
         }
     }
 
@@ -46,9 +48,9 @@ Item {
     DropShadow {
         source: tile
         anchors.fill: tile
-        horizontalOffset: calculateSize(4)
-        verticalOffset: calculateSize(2)
-        radius: calculateSize(18)
+        horizontalOffset: 4  * scaleRatio
+        verticalOffset: 2  * scaleRatio
+        radius: 18  * scaleRatio
         samples: radius
         color: shadowColor
     }

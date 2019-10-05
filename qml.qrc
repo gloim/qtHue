@@ -1,9 +1,17 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Page1Form.ui.qml</file>
-        <file>Page2Form.ui.qml</file>
-        <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>customComponents/Divider.qml</file>
+        <file>main.cpp</file>
+        <file>images/bulbIcon.png</file>
+        <file>tiles/Tile.qml</file>
+        <file>pages/HomePage.qml</file>
+        <file>pages/LightsPage.qml</file>
+        <file>pages/SettingsPage.qml</file>
+        <file>pages/WeatherPage.qml</file>
+        <file>tiles/WeatherTile.qml</file>
+        <file>customComponents/CustomScrollView.qml</file>
+        <file>js/uiFunctions.js</file>
     </qresource>
 </RCC>

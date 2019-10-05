@@ -1,5 +1,8 @@
-import QtQuick 2.0
+import QtQuick 2.13
+import QtQuick.Controls.Styles 1.4
+import QtQuick.Controls 1.4
 import "../tiles"
+import "../customComponents"
 
 /*
 
@@ -10,30 +13,38 @@ import "../tiles"
 
 */
 
-Item {
 
-    // == Tiles == //
-    width: parent.width; height: parent.height
-    anchors.top: parent.top
-    anchors.topMargin: 160 * scaleRatio
-
-        // Lights Tile //
-        Tile {
-            anchors.right: middle.left
-            anchors.rightMargin: 90 * scaleRatio
-
+CustomScrollView {
+    // Lights Tile //
+    Tile {
+        id: first
+        anchors.leftMargin: 90 * scaleRatio
+        onClicked: {
+            //console.log("length: " + stacky.currentItem.contentItem.children.length)
+            stacky.currentItem.flickableItem.contentX = 0
+            stacky.push(lightsPage)
         }
 
-        // Weather Tile //
-        Tile {
-            id: middle
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
+        Text {
+            text: qsTr("home")
         }
+     }
 
-        // Settings Tile //
-        Tile {
-            anchors.left: middle.right
-            anchors.leftMargin: 90 * scaleRatio
-        }
+    // Weather Tile //
+    Tile {
+        id: second
+        anchors.left: first.right
+        anchors.leftMargin: 90 * scaleRatio
+        onClicked: stacky.push(weatherPage)
+    }
+
+    // Settings Tile //
+    Tile {
+        id: third
+        anchors.left: second.right
+        anchors.leftMargin: 90 * scaleRatio
+        onClicked: stacky.push(settingsPage)
+    }
 }
+
+
