@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QFontDatabase>
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +18,9 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
+
+    QFont font("Heebo", 23);
+    app.setFont(font);
 
     return app.exec();
 }

@@ -19,15 +19,7 @@ CustomScrollView {
     Tile {
         id: first
         anchors.leftMargin: 90 * scaleRatio
-        onClicked: {
-            //console.log("length: " + stacky.currentItem.contentItem.children.length)
-            stacky.currentItem.flickableItem.contentX = 0
-            stacky.push(lightsPage)
-        }
-
-        Text {
-            text: qsTr("home")
-        }
+        onClicked: stacky.push(lightsPage)
      }
 
     // Weather Tile //
@@ -36,6 +28,7 @@ CustomScrollView {
         anchors.left: first.right
         anchors.leftMargin: 90 * scaleRatio
         onClicked: stacky.push(weatherPage)
+        iconFilePath: '../images/sunIcon.png'
     }
 
     // Settings Tile //
@@ -44,6 +37,7 @@ CustomScrollView {
         anchors.left: second.right
         anchors.leftMargin: 90 * scaleRatio
         onClicked: stacky.push(settingsPage)
+        iconFilePath: '../images/settingsIcon.png'
     }
 }
 

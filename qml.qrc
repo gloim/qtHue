@@ -13,5 +13,8 @@
         <file>tiles/WeatherTile.qml</file>
         <file>customComponents/CustomScrollView.qml</file>
         <file>js/uiFunctions.js</file>
+        <file>fonts/Heebo-Bold.ttf</file>
+        <file>images/settingsIcon.png</file>
+        <file>images/sunIcon.png</file>
     </qresource>
 </RCC>

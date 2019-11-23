@@ -11,7 +11,8 @@ import "../js/uiFunctions.js" as UiFunctions
 
     ToDo:   - function saduiajsdfbhsdifhj - wtf did I try to say, all I know is I was in a hurry
             - shadow at borders on x axis when the leftmost item isn't the first object in the scrollview
-
+            - disable scrollbar during animation
+            - factor aspect ratio into animationDuration
 
 */
 
@@ -21,9 +22,10 @@ ScrollView {
     property int lastItem
 
     default property alias _contentChildren: tileContainer.data
+
     id: scrolll
-    width: tileContainer.width < window.width ? tileContainer.width : parent.width
-    height: window.height
+    width: tileContainer.width < window.width ? tileContainer.width : parent.width; height: window.height
+    //anchors.horizontalCenter: parent.horizontalCenter
     flickableItem.interactive: true
     flickableItem.boundsBehavior: "DragAndOvershootBounds"
     flickableItem.flickableDirection: "HorizontalFlick"
@@ -53,7 +55,6 @@ ScrollView {
         }
     }
 
-
     Item {
         id: tileContainer
         implicitWidth: childrenRect.width; implicitHeight: childrenRect.height
@@ -66,5 +67,4 @@ ScrollView {
             UiFunctions.applyMarginFix();
         }
     }
-
 }

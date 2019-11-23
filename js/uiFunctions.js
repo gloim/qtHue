@@ -18,7 +18,7 @@ function advancedPopAnimation() {
         console.log("resultDecimals: " + resultDecimals);
 
     //set duration of contentXAnimation
-    animationDuration = 1 / (window.width / 1200) * (resultDecimals * 510);
+    animationDuration = 1 / (window.width / 1200) * (resultDecimals * 510 * scaleRatio);
         console.log(animationDuration);
 
     // setting new contentX
@@ -28,18 +28,16 @@ function advancedPopAnimation() {
     if (result > 1) {
         currentItem.contentItem.children[~~result - 1].children[1].color = primaryColor;
     }
-
     delay(animationDuration, function() { stacky.pop(); } )
-
     delay2(1200, function() {
                         if(result >= 1) {
                             currentItem.contentItem.children[~~result - 1].children[1].color = shadowColor;
                         }
                   })
-
     contentXAnimationEnabled = false;
 }
 
+// Adds an invisible object left an right of the scrollView to make margins there possible
 function applyMarginFix() {
     for (var i = 0; i < tileContainer.children.length ; i++) {
         if (i < i - 1) {
@@ -60,3 +58,22 @@ function applyMarginFix() {
     marginFixRightObject.anchors.left = tileContainer.children[lastItem].right;
 }
 
+function homeGesture() {
+    if(pressed) {
+        startingY = point1.y
+        console.log("===== Home/pop() Gesture =====")
+        console.log("start: " + startingY)
+    }
+    if (!pressed) {
+        endingY = point1.y
+        console.log("end: " + endingY)
+
+        // checks if y-axis position is -300 less on release than on press
+        if (endingY < startingY - 300 * scaleRatio && stacky.currentItem !== homePage) {
+            console.log('Gesture event activated')
+            UiFunctions.advancedPopAnimation()
+        }else {
+            console.log('Gesture event NOT activated')
+        }
+    }
+}
